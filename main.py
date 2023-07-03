@@ -43,10 +43,6 @@ def textoconsole():
       """
     #estructura de control if ---------------------------------------
     #Andres
-    def p_instructionConditional(p):
-      '''  
-        instruction : conditional
-      '''
     def p_conditional(p):
       '''
         conditional : IF condition instructionBody END
@@ -66,10 +62,6 @@ def textoconsole():
     #-----------------------------------------------------
     # estructura de control while ------------------------
     #Yoser
-    def p_instructionLoop(p):
-      '''
-        instruction : whileLoop 
-      '''
 
     def p_whileLoop(P):
       '''
@@ -78,9 +70,6 @@ def textoconsole():
       
     #estructura de control for--------------------------
     #Nick
-    def p_instructionFor(p):
-      'instruction : forLoop'
-
     def p_forLoop(p):
       'forLoop : FOR ID IN LPAREN INTEGER DOT DOT INTEGER RPAREN instructionBody END'
     #-------------------------------------------------
@@ -334,16 +323,14 @@ def textoconsole():
     archivo = open("datos.txt", "w")
     archivo.write('')
     archivo.close()
-    #------------------------------------------------------------------------------------------------
+    
+    cajaconsole.delete("1.0", tk.END)  # Limpiar el contenido actual del widget Text
+    cajaconsole.insert(tk.END, contenido)  # Insertar el contenido del archivo en el widget Text
 
-    while True:
-      try:
-        s = input('ruby > ')
-      except EOFError:
-        break
-      if not s: continue
-      result = sintactico.parse(s)
-      if result != None: print(result)
+    #----------------------------------------------Procesamiento de datos --------------------------------------------------
+    archiCodigo = open('codigo.txt','r')
+    for lineaCodigo in archiCodigo.readlines():
+      result = sintactico.parse(lineaCodigo)
 
     #----------------------------------------------------fin programa principal----------------------
 

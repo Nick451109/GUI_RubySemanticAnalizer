@@ -1,1 +1,3 @@
-esecsdvsvd
+def funcion 1
+print
+end
