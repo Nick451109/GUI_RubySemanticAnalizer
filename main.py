@@ -101,6 +101,8 @@ def textoconsole():
                   | method
                   | unaryOperator
                   | forLoop
+                  | push
+                  | operationSemantic
       '''
     def p_instructionBody(p):
       '''
@@ -294,8 +296,16 @@ def textoconsole():
           number : FLOAT
                 | INTEGER
         '''
+    #SEMANTICA-------------------
+    
+    #Yoser
+    def p_operationSemantic(p):
+      'operationSemantic : number arithmeticOperator number'
 
+    def p_push(p):
+      'push : STACK DOT PUSH LPAREN ID RPAREN'
 
+      
     def p_error(p):
 
       if p:
@@ -332,6 +342,7 @@ def textoconsole():
     for lineaCodigo in archiCodigo.readlines():
       codigoAnalizar = codigoAnalizar + " " +lineaCodigo.strip()
     sintactico.parse(codigoAnalizar)
+
     archivo = open('datos.txt','r')
     if len(archivo.readlines()) == 0: 
       cajaconsole.delete("1.0", tk.END)

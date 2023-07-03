@@ -1,1 +1,1 @@
-Syntax error at EOF
+Error de sintaxis en token:COMMA
