@@ -331,10 +331,12 @@ def textoconsole():
     codigoAnalizar = ""
     for lineaCodigo in archiCodigo.readlines():
       codigoAnalizar = codigoAnalizar + " " +lineaCodigo.strip()
-    result = sintactico.parse(codigoAnalizar)
-    if result == None: 
-      print("hola estoy aqui")
-      cajaconsole.insert(tk.END,"Compile Succefull :D")
+    sintactico.parse(codigoAnalizar)
+    archivo = open('datos.txt','r')
+    if len(archivo.readlines()) == 0: 
+      cajaconsole.delete("1.0", tk.END)
+      cajaconsole.insert(tk.END,"Compile successfully :D")
+      
 
     #----------------------------------------------------fin programa principal----------------------
 
