@@ -297,17 +297,16 @@ def textoconsole():
 
 
     def p_error(p):
+
       if p:
         archivo = open("datos.txt", "a") #probar con "a"
         print("Error de sintaxis en token:", p.type)
         archivo.write("Error de sintaxis en token:{}\n".format(p.type))
         archivo.close()
-        #sintactico.errok()
       else:
         archivo = open("datos.txt", "a")
         archivo.write("Syntax error at EOF\n")
         archivo.close()
-        print("Syntax error at EOF")
 
 
     sintactico = yacc.yacc()
@@ -329,8 +328,13 @@ def textoconsole():
 
     #----------------------------------------------Procesamiento de datos --------------------------------------------------
     archiCodigo = open('codigo.txt','r')
+    codigoAnalizar = ""
     for lineaCodigo in archiCodigo.readlines():
-      result = sintactico.parse(lineaCodigo)
+      codigoAnalizar = codigoAnalizar + " " +lineaCodigo.strip()
+    result = sintactico.parse(codigoAnalizar)
+    if result == None: 
+      print("hola estoy aqui")
+      cajaconsole.insert(tk.END,"Compile Succefull :D")
 
     #----------------------------------------------------fin programa principal----------------------
 

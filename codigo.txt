@@ -1,3 +1,2 @@
-def funcion 1
-print
+def fun()
 end

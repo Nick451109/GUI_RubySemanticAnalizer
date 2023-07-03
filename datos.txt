@@ -1,3 +1,0 @@
-Error de sintaxis en token:INTEGER
-Syntax error at EOF
-Error de sintaxis en token:END
