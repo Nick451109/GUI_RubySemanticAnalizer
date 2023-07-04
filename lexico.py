@@ -5,7 +5,7 @@ import reservadas
 #nick break - in 
 #joseph elsif - to_i
 reserved = reservadas.crear(
-  ['if','else','print','end','break','class','while','for','true','false','in','elsif','def','case','then','puts','gets','chomp','to_i','to_f','stack','new', 'linkedlist', 'node', 'hash', 'return','yield','do', 'lambda','push'])
+  ['if','else','print','end','break','class','while','for','true','false','in','elsif','def','case','then','puts','gets','chomp','to_i','to_f','stack','new', 'linkedlist', 'node', 'hash', 'return','yield','do', 'lambda','push', 'add'])
 
 
 
@@ -18,6 +18,7 @@ tokens = (
   'GREATEROREQUALS',
   'ID',
   'LESSOREQUALS',
+  'OR',
   #Nick
   'ASSIGNMENT',
   'ASSIGNINCREMENT',
@@ -49,6 +50,7 @@ t_EQUALS = r'=='
 t_GREATEROREQUALS = r'>='
 t_STRING =r'"[^"]*"'
 t_AND = r'&&'
+t_OR = r'\|\|'
 t_LESSOREQUALS = r'<='
 
 #Nick

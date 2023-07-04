@@ -1,1 +1,1 @@
-stack.push(a,a)
+false || "a"

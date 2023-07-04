@@ -102,7 +102,11 @@ def textoconsole():
                   | unaryOperator
                   | forLoop
                   | push
-                  | operationSemantic
+                  | semanticOperation
+                  | add
+                  | semanticComparation
+                  | semanticHash
+                  | semanticConditions
       '''
     def p_instructionBody(p):
       '''
@@ -296,16 +300,49 @@ def textoconsole():
           number : FLOAT
                 | INTEGER
         '''
-    #SEMANTICA-------------------
+    #REGLAS SEMANTICAS-------------------
     
     #Yoser
-    def p_operationSemantic(p):
-      'operationSemantic : number arithmeticOperator number'
+    def p_semanticOperation(p):
+      'semanticOperation : number arithmeticOperator number'
 
     def p_push(p):
-      'push : STACK DOT PUSH LPAREN ID RPAREN'
+      'push : ID DOT PUSH LPAREN ID RPAREN'
 
-      
+    def p_add(p):
+      'add : ID DOT ADD LPAREN ID RPAREN'
+    
+    def p_semanticComparation(p):
+      'semanticComparation : number comparator number'
+
+    def p_hashValue(p):
+      '''
+        hashValue : STRING COLON ID
+                  | STRING COLON number
+                  | STRING COLON STRING
+      '''
+
+    def p_repeatHashValues(p):
+       '''
+       repeatHashValues : hashValue
+                         | hashValue COMMA repeatHashValues
+      '''
+    def p_semanticHash(p):
+      'semanticHash : LBRACE repeatHashValues RBRACE'
+
+    def p_concatenator(p):
+      '''
+        concatenator : AND
+                      | OR
+      '''
+
+    def p_semanticConditions(p):
+      '''semanticConditions : TRUE concatenator TRUE 
+                            | TRUE concatenator FALSE
+                            | FALSE concatenator TRUE
+                            | FALSE concatenator FALSE 
+      '''
+
     def p_error(p):
 
       if p:
