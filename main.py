@@ -309,6 +309,7 @@ def textoconsole():
     def p_push(p):
       'push : ID DOT PUSH LPAREN ID RPAREN'
 
+    #Andres
     def p_add(p):
       'add : ID DOT ADD LPAREN ID RPAREN'
     
@@ -327,6 +328,8 @@ def textoconsole():
        repeatHashValues : hashValue
                          | hashValue COMMA repeatHashValues
       '''
+       
+    #Nick
     def p_semanticHash(p):
       'semanticHash : LBRACE repeatHashValues RBRACE'
 
@@ -392,17 +395,24 @@ def textoconsole():
 # Crear la ventana
 ventana = tk.Tk()
 ventana.geometry("730x700")
+ventana.configure(bg='#507D83')
 
-cajacodigo = tk.Text(ventana, width = 30,height=30 )
-cajaconsole = tk.Text(ventana, width = 30,height=30 )
-cajafiles = tk.Text(ventana, width = 30,height=30 )
+nombres = "Elaborado por : \n Nick arevalo \n Andres borbor \n Joseph carabajo \n :D"
+
+cajacodigo = tk.Text(ventana, width = 30,height=30, bg= '#202020' )
+cajaconsole = tk.Text(ventana, width = 30,height=30, bg= '#202020' )
+cajafiles = tk.Text(ventana, width = 30,height=30, bg= '#202020')
+
+cajafiles.insert(tk.END,nombres)
+cajafiles.config(fg='white')
+cajacodigo.config(fg='white')
+cajacodigo.configure(insertbackground= 'white')
+cajaconsole.config(fg='white')
 
 titulo = tk.Label(ventana, text="RUBYLIX\n Simple Ruby Syntax Checker")
-btopenfile = tk.Button(ventana, text = "Open file", width = 10, height=2)
 btcheck = tk.Button(ventana, text = "Check", width = 10, height=2, command=textoconsole)
 
 titulo.grid(row = 0, column = 1, pady=10)
-btopenfile.grid(row = 0, column = 0, pady=10)
 btcheck.grid(row = 0, column = 2, pady=10,)
 
 cajacodigo.grid(row=1,column=1, pady=10)
